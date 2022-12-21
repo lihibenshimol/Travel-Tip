@@ -53,7 +53,6 @@ function onGetUserPos() {
             console.log('User position is:', pos.coords)
             document.querySelector('.user-pos').innerText =
                 `Latitude: ${pos.coords.latitude} - Longitude: ${pos.coords.longitude}`
-            //DONE show user location on map with initmap + show location
             mapService.panTo(pos.coords.latitude, pos.coords.longitude)
             mapService.addMarker({ lat: pos.coords.latitude, lng: pos.coords.longitude })
         })
