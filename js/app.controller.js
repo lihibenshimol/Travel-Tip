@@ -7,6 +7,7 @@ window.onPanTo = onPanTo
 window.onGetLocs = onGetLocs
 window.onGetUserPos = onGetUserPos
 window.onSearch = onSearch
+window.onDel = onDel
 
 function onInit() {
     mapService.initMap()
@@ -40,6 +41,7 @@ function onGetLocs() {
                 <span> ${location.name} </span> <br>
                 Created at: ${location.createdAt} <br>
                 ID: ${location.id}
+                <button onclick="onDel('${location.id}')">Delete</button>
                 </li>
                 `
             }).join('')
@@ -73,4 +75,9 @@ function onSearch(ev) {
     const address = elInputSearch.split(' ').join('20%')
     mapService.search(address)
 //todo add ad addLocation function
+}
+
+function onDel(id){
+    locService.deleteLoc(id)
+        .then(onGetLocs)
 }

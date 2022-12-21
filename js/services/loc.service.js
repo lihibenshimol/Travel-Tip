@@ -6,10 +6,14 @@ const LOC_KEY = 'locsDB'
 export const locService = {
     getLocs,
     getDate,
-    addLoc
+    addLoc,
+    deleteLoc
 }
 
-
+const locs = [
+    { name: 'Greatplace', id: 'akoic', lat: 32.047104, lng: 34.832384, createdAt: Date.now() },
+    { name: 'Neveragain', id: 'n35mk', lat: 32.0553468, lng: 34.7883905, createdAt: Date.now() },
+]
 
 // const locs_new= [
 //     { name: 'Greatplace', id: 'akoic', lat: 32.047104, lng: 34.832384, createdAt: Date.now() },
@@ -22,6 +26,7 @@ function getLocs() {
     //todo check if locs in local storage if not return loce
     return storageService.query(LOC_KEY)
         .then(locations => {
+            console.log(locations);
             if (!locations || !locations.length) {
                 console.log('locations = ', locations)
                 // console.log('im working');
@@ -35,17 +40,14 @@ function getLocs() {
             console.log('now im ');
             return new Promise((resolve, reject) => {
                 setTimeout(() => {
-                    resolve(locs)
+                    resolve(locations[0])
             
                 }, 2000)
             })
         })
 }
 
-const locs = [
-    { name: 'Greatplace', id: 'akoic', lat: 32.047104, lng: 34.832384, createdAt: Date.now() },
-    { name: 'Neveragain', id: 'n35mk', lat: 32.0553468, lng: 34.7883905, createdAt: Date.now() },
-]
+
 
 function addLoc(name ,lat, lng) {
     locs.push({
@@ -72,4 +74,9 @@ function getDate(date) { //todo move to util
     }
     const formatedDate = new Intl.DateTimeFormat(language, option).format(date)
     return formatedDate
+}
+
+function deleteLoc(id){
+    // console.log(id);
+    return storageService.remove(LOC_KEY, id)
 }

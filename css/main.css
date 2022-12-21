@@ -54,6 +54,9 @@ body {
     background-color: rgb(119, 82, 65);
 }
 
+ul{
+    padding: 0;
+}
 .saved-locs .locs ul {
     margin-inline-start: 0;
     align-items: center;
