@@ -1,7 +1,8 @@
 export const mapService = {
     initMap,
     addMarker,
-    panTo
+    panTo,
+    search
 }
 
 // const API_KEY = 'AIzaSyB4O57BhI5-NEa91dIdJp0kZQWc81W6Q48'
@@ -18,7 +19,6 @@ function initMap(lat = 32.0749831, lng = 34.9120554) {
                 center: { lat, lng },
                 zoom: 15
             })
-
             gMap.addListener("click", onClickMap)
             addMarker({lat, lng})
         })
@@ -36,7 +36,8 @@ function addMarker(loc) {
 function panTo(lat, lng) {
     var laLatLng = new google.maps.LatLng(lat, lng)
     gMap.panTo(laLatLng)
-
+    addMarker({lat, lng})
+    initMap(lat, lng)
     //todo add a search input and use google geocode to can location lat lng
 }
 
@@ -55,6 +56,16 @@ function _connectGoogleApi() {
     })
 }
 
+function search(address) {
+    return axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyB4O57BhI5-NEa91dIdJp0kZQWc81W6Q48`)
+    .then(res => {
+        const lat = res.data.results[0].geometry.location.lat
+        const lng = res.data.results[0].geometry.location.lng
+        panTo(lat, lng)
+    })
+
+
+}
 
 function onClickMap(ev){
         const loc = {
