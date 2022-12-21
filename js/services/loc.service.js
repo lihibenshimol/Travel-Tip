@@ -1,5 +1,6 @@
 export const locService = {
-    getLocs
+    getLocs,
+    addLocation
 }
 
 
@@ -16,4 +17,16 @@ function getLocs() {
     })
 }
 
+function addLocation() {
+    locs.push(_createLocation)
+}
 
+function _createLocation(name, lat, lng) {
+    return {
+        id: makeId(),
+        lat,
+        lng,
+        name,
+        createdAt: Date.now()
+    }
+}
