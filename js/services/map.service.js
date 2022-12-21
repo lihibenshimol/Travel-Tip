@@ -38,13 +38,15 @@ function addMarker(loc) {
 function panTo(lat, lng) {
     var laLatLng = new google.maps.LatLng(lat, lng)
     gMap.panTo(laLatLng)
+    
     //todo add a search input and use google geocode to can location lat lng
 }
 
 
 function _connectGoogleApi() {
+    console.log('hi');
     if (window.google) return Promise.resolve()
-    const API_KEY = 'AIzaSyB4O57BhI5-NEa91dIdJp0kZQWc81W6Q48' //TODO: Enter your API Key
+    const API_KEY = 'AIzaSyB4O57BhI5-NEa91dIdJp0kZQWc81W6Q48'
     var elGoogleApi = document.createElement('script')
     elGoogleApi.src = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}`
     elGoogleApi.async = true
