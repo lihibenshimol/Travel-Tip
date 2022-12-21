@@ -33,7 +33,17 @@ function onGetLocs() {
         .then(locs => {
             console.log('Locations:', locs)
             //todo add a renderLocs function 
-            document.querySelector('.locs').innerText = JSON.stringify(locs, null, 2)
+            var strHTML = locs.map(location => {
+                return `
+                <li class="savedLoc" onclick="onPanTo(${location.lat},${location.lng})">
+                ${location.name} <br>
+                Created at: ${location.createdAt} <br>
+                ID: ${location.id}
+                </li>
+                `
+            }).join('')
+            document.querySelector('.locs').innerHTML = strHTML
+            // document.querySelector('.locs').innerText = JSON.stringify(locs, null, 2)
         })
 }
 
@@ -43,15 +53,15 @@ function onGetUserPos() {
             console.log('User position is:', pos.coords)
             document.querySelector('.user-pos').innerText =
                 `Latitude: ${pos.coords.latitude} - Longitude: ${pos.coords.longitude}`
-                //todo show user location on map with initmap + show location
+            //todo show user location on map with initmap + show location
         })
         .catch(err => {
             console.log('err!!!', err)
         })
 }
-function onPanTo(ev) {
-    console.log('ev = ', ev)
-    mapService.panTo(35.6895, 139.6917)
-    locService.addLocation(name, lat, lns)
+
+function onPanTo(lat, lng) {
+    mapService.panTo(lat, lng)
+    // mapService.panTo({lat: 35.6895, lng:139.6917})
     console.log('Panning the Map')
 }
