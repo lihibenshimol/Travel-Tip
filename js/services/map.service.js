@@ -1,3 +1,5 @@
+import {locService} from './loc.service.js'
+
 export const mapService = {
     initMap,
     addMarker,
@@ -59,12 +61,12 @@ function _connectGoogleApi() {
 function search(address) {
     return axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyB4O57BhI5-NEa91dIdJp0kZQWc81W6Q48`)
     .then(res => {
+        const name = res.data.results[0].formatted_address
         const lat = res.data.results[0].geometry.location.lat
         const lng = res.data.results[0].geometry.location.lng
         panTo(lat, lng)
+        locService.addLoc(name, lat, lng)
     })
-
-
 }
 
 function onClickMap(ev){
