@@ -1,0 +1,74 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+.btn {
+    border-radius: 10px;
+    border: .7px solid rgba(0, 0, 0, 0.551);
+    font-size: 1em;
+}
+
+/* USER CONTROL */
+.user-control {
+    margin: 20px;
+    height: 200px;
+    background-color: bisque;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+
+/* SEARCH */
+.search-box .search-input {
+    height: 50px;
+    width: 50vw;
+    border-radius: 14px;
+    border: none;
+}
+
+/* BUTTONS */
+
+/* MAP AND SAVED LOCATIONS */
+
+.info-container {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding: 20px;
+    gap: 20px;
+    max-width: 800px;
+    background-color: burlywood;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.saved-locs {
+    width: 300px;
+    background-color: rgb(119, 82, 65);
+}
+
+.saved-locs .locs ul {
+    margin-inline-start: 0;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    margin: 0 auto;
+}
+
+.saved-locs .locs li {
+    background-color: rgb(255, 227, 204);
+    list-style: none;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+.saved-locs .locs li span {
+    font-weight: 500;
+}

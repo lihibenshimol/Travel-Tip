@@ -8,11 +8,20 @@ export const locService = {
     getDate,
 }
 
+// const locs = []
 
 const locs = [
     { name: 'Greatplace', id: 'akoic', lat: 32.047104, lng: 34.832384, createdAt: Date.now() },
     { name: 'Neveragain', id: 'n35mk', lat: 32.0553468, lng: 34.7883905, createdAt: Date.now() },
 ]
+
+// function createLocation(id) {
+//     var loc = {
+//         name: 'Greatplace', id, lat: 32.047104, lng: 34.832384, createdAt: Date.now() 
+//     }
+//     locs.push(loc)
+//     utilService.saveToStorage(LOC_KEY, locs)
+// }
 
 
 function getLocs() {
@@ -27,7 +36,6 @@ function getLocs() {
                 // })
         
                 storageService.post(LOC_KEY, locs)
-                .then(console.log)
             }
             console.log('now im ');
             return new Promise((resolve, reject) => {

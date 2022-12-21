@@ -37,7 +37,7 @@ function onGetLocs() {
             var strHTML = locs.map(location => {
                 return `
                 <li class="savedLoc" onclick="onPanTo(${location.lat},${location.lng})">
-                ${location.name} <br>
+                <span> ${location.name} </span> <br>
                 Created at: ${location.createdAt} <br>
                 ID: ${location.id}
                 </li>
@@ -72,8 +72,8 @@ function onPanTo(lat, lng) {
 
 function onSearch(ev){
     if (ev) ev.preventDefault()
-    const elInputSearch = document.querySelector('input[name=search]')
-    
-    console.log(elInputSearch.value)
+    const elInputSearch = document.querySelector('input[name=search]').value
+    console.log(elInputSearch)
+    // https://maps.googleapis.com/maps/api/geocode/json?place_id=ChIJeRpOeF67j4AR9ydy_PIzPuM&key=YOUR_API_KEY
 
 }
