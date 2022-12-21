@@ -15,8 +15,13 @@ const locs = [
 
 function getLocs() {
     //todo check if locs in local storage if not return loce
-    return storageService.query(LOC_KEY)
-    
+    // return storageService.query(LOC_KEY)
+    // .then(locations => {
+    //     if (!locations || !locations.length) {
+
+    //     }
+    // })
+
 
 
     return new Promise((resolve, reject) => {
