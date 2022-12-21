@@ -32,6 +32,7 @@ function onGetLocs() {
     locService.getLocs()
         .then(locs => {
             console.log('Locations:', locs)
+            //todo add a renderLocs function 
             document.querySelector('.locs').innerText = JSON.stringify(locs, null, 2)
         })
 }
@@ -42,12 +43,15 @@ function onGetUserPos() {
             console.log('User position is:', pos.coords)
             document.querySelector('.user-pos').innerText =
                 `Latitude: ${pos.coords.latitude} - Longitude: ${pos.coords.longitude}`
+                //todo show user location on map with initmap + show location
         })
         .catch(err => {
             console.log('err!!!', err)
         })
 }
-function onPanTo() {
-    console.log('Panning the Map')
+function onPanTo(ev) {
+    console.log('ev = ', ev)
     mapService.panTo(35.6895, 139.6917)
+    locService.addLocation(name, lat, lns)
+    console.log('Panning the Map')
 }

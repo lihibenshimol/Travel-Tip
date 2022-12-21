@@ -4,7 +4,7 @@ export const mapService = {
     panTo
 }
 
-
+const API_KEY = 'AIzaSyB4O57BhI5-NEa91dIdJp0kZQWc81W6Q48'
 // Var that is used throughout this Module (not global)
 var gMap
 
@@ -34,6 +34,7 @@ function addMarker(loc) {
 function panTo(lat, lng) {
     var laLatLng = new google.maps.LatLng(lat, lng)
     gMap.panTo(laLatLng)
+    //todo add a search input and use google geocode to can location lat lng
 }
 
 
