@@ -44,7 +44,6 @@ function onGetLocs() {
                 `
             }).join('')
             document.querySelector('.locs').innerHTML = strHTML
-            // document.querySelector('.locs').innerText = JSON.stringify(locs, null, 2)
         })
 }
 
@@ -54,8 +53,8 @@ function onGetUserPos() {
             console.log('User position is:', pos.coords)
             document.querySelector('.user-pos').innerText =
                 `Latitude: ${pos.coords.latitude} - Longitude: ${pos.coords.longitude}`
-                //DONE show user location on map with initmap + show location
-            mapService.panTo(pos.coords.latitude,pos.coords.longitude)
+            //DONE show user location on map with initmap + show location
+            mapService.panTo(pos.coords.latitude, pos.coords.longitude)
             mapService.addMarker({ lat: pos.coords.latitude, lng: pos.coords.longitude })
         })
         .catch(err => {
@@ -65,15 +64,14 @@ function onGetUserPos() {
 
 function onPanTo(lat, lng) {
     mapService.panTo(lat, lng)
-    // mapService.panTo({lat: 35.6895, lng:139.6917})
     console.log('Panning the Map')
 }
 
 
-function onSearch(ev){
+function onSearch(ev) {
     if (ev) ev.preventDefault()
     const elInputSearch = document.querySelector('input[name=search]').value
-    console.log(elInputSearch)
-    // https://maps.googleapis.com/maps/api/geocode/json?place_id=ChIJeRpOeF67j4AR9ydy_PIzPuM&key=YOUR_API_KEY
-
+    const address = elInputSearch.split(' ').join('20%')
+    mapService.search(address)
+//todo add ad addLocation function
 }
